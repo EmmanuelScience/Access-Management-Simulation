@@ -42,7 +42,8 @@ class AccessKey():
             self.__expiration_date = self.__issued_at + (validity * 30 * 24 * 60 *60)
         self.__key = hashlib.sha256(self.__signature_string().encode()).hexdigest()
 
-
+    def store(self):
+        return self.__dict__
     def __signature_string(self):
         """Composes the string to be used for generating the key"""
         return "{alg:"+self.__alg + ",typ:" + self.__type + ",accesscode:"\

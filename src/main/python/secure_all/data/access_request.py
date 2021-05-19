@@ -1,5 +1,6 @@
 """MODULE: access_request. Contains the access request class"""
 import json
+import copy
 import hashlib
 from secure_all.exception.access_management_exception import AccessManagementException
 from secure_all.data.attributes.attribute_full_name import FullName
@@ -21,10 +22,15 @@ class AccessRequest:
         self.__email_address = Email(email_address).value
         self.__validity = access_type_object.validate_days(validity)
         access_type_object = None
+
         #justnow = datetime.utcnow()
         #self.__time_stamp = datetime.timestamp(justnow)
         #only for testing , fix de time stamp to this value 1614962381.90867 , 5/3/2020 18_40
         self.__time_stamp = 1614962381.90867
+    def store(self):
+        my_dict = copy.deepcopy(self.__dict__)
+        my_dict["_AccessRequest__access_code"] = self.access_code
+        return my_dict
 
     def __str__(self):
         """It returns the json corresponding to the AccessRequest"""
@@ -83,18 +89,19 @@ class AccessRequest:
     @property
     def access_code (self):
         """Property for obtaining the access code according the requirements"""
+        print(self.__str__())
         return hashlib.md5(self.__str__().encode()).hexdigest()
 
     @classmethod
-    def create_request_from_code( cls, access_code, dni ):
+    def create_request_from_code( cls, access_code, dni):
         """Load from the store an AccessRequest from the access_code
         and the dni"""
         request_store = RequestJsonStore()
-        request_stored = request_store.find_item(dni)
+        request_stored = request_store.find_item(access_code)
         if request_stored is None:
             raise AccessManagementException(request_store.NOT_FOUND_IN_THE_STORE)
 
-        request_stored_object = cls(request_stored[ request_store.ID_FIELD ],
+        request_stored_object = cls(request_stored[ request_store.DNI ],
                                         request_stored[ request_store.REQUEST__NAME ],
                                         request_stored[ request_store.REQUEST__VISITOR_TYPE ],
                                         request_stored[ request_store.REQUEST__EMAIL_ADDRESS ],

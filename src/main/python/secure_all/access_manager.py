@@ -2,6 +2,7 @@
 
 from secure_all.data.access_key import AccessKey
 from secure_all.data.access_request import AccessRequest
+from secure_all.data.access_log import AccessLog
 
 
 class AccessManager:
@@ -24,7 +25,10 @@ class AccessManager:
 
         def open_door( self, key ):
             """Opens the door if the key is valid an it is not expired"""
-            return AccessKey.create_key_from_id(key).is_valid()
+            test = AccessKey.create_key_from_id(key).is_valid()
+            access_log = AccessLog(key)
+            access_log.store_log()
+            return test
 
     __instance = None
 

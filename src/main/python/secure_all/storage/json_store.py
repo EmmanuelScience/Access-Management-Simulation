@@ -1,9 +1,11 @@
 """Generic class for JSON storage"""
+import copy
 import json
 from secure_all.exception.access_management_exception import AccessManagementException
 
+
 class JsonStore():
-    """Managest stores based on JsonFiles"""
+    """Manages stores based on JsonFiles"""
     _FILE_PATH = ""
     _ID_FIELD = ""
 
@@ -32,7 +34,7 @@ class JsonStore():
         Since this is a generic class further verifications should be included
         in the specific stores"""
         self.load_store()
-        self._data_list.append(item.__dict__)
+        self._data_list.append(item.store())
         self.save_store()
 
     def find_item( self, key ):

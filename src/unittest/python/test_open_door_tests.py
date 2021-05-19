@@ -1,5 +1,6 @@
 """open_door test cases"""
 import unittest
+import json
 
 from secure_all import AccessManager, AccessManagementException, \
     AccessKey, JSON_FILES_PATH, KeysJsonStore, RequestJsonStore
@@ -41,6 +42,11 @@ class TestAccessManager(unittest.TestCase):
         my_key_expirated.expiration_date = 0
         my_key_expirated.store_keys()
 
+        # Method used to set up JSON files that contain access keys
+        store_key = JSON_FILES_PATH + 'storeAccessLog.json'
+        with open(store_key, "w") as file:
+            json.dump([], file)
+
     def test_open_door_bad_key_regex(self):
         """path: regex is not valid , key length is 63 chars"""
         my_key = AccessManager()
@@ -57,11 +63,13 @@ class TestAccessManager(unittest.TestCase):
         self.assertEqual(True, result)
 
     def test_open_door_resident(self):
-        """path: regex ok, key is found, expiration date is 0, resident"""
+        """Tests if key already exists"""
+        #path: regex ok, key is found, expiration date is 0, resident
         my_key = AccessManager()
-        result = my_key.open_door\
-            ("de000a04f3a9b1d15b07e38b166f00f3fb1bf46533f32ac37156faf43e47f722")
-        self.assertEqual(True, result)
+        with self.assertRaises(AccessManagementException) as c_m:
+            my_key.open_door\
+                ("de000a04f3a9b1d15b07e38b166f00f3fb1bf46533f32ac37156faf43e47f722")
+        self.assertEqual("Access already logged", c_m.exception.message)
 
     def test_open_door_bad_key_is_not_found(self):
         """path: regex ok, key is not found"""

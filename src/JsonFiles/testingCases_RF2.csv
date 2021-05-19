@@ -51,7 +51,7 @@ INVALID;RF2 49;key_bad_label3.json;JSON Decode Error - Wrong label
 INVALID;RF2 50;key_eliminated_comma.json;JSON Decode Error - Wrong JSON Format
 INVALID;RF2 51;key_empty_json.json;JSON Decode Error - Wrong JSON Format
 INVALID;RF2 52;key_incorrect_dni_letter.json;DNI is not valid
-INVALID;RF2 53;key_nok.json;access code is not correct for this DNI
+INVALID;RF2 53;key_nok.json;access code is not found
 INVALID;RF2 54;key_without_bracket.json;JSON Decode Error - Wrong JSON Format
 INVALID;RF2 55;key_without_final_bracket.json;JSON Decode Error - Wrong JSON Format
 INVALID;RF2 56;key_without_open_bracket_mail.json;JSON Decode Error - Wrong JSON Format
