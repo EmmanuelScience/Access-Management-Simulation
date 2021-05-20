@@ -90,7 +90,6 @@ class AccessRequest:
     @property
     def access_code (self):
         """Property for obtaining the access code according the requirements"""
-        print(self.__str__())
         return hashlib.md5(self.__str__().encode()).hexdigest()
 
     @classmethod

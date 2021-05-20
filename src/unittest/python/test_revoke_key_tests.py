@@ -1,15 +1,16 @@
+"""test module for the revoke access method"""
 import unittest
 import csv
-from secure_all import AccessManager, AccessManagementException, AccessKey, \
+from secure_all import AccessManager, AccessManagementException,\
     JSON_FILES_PATH, KeysJsonStore, RequestJsonStore
 
 
 class MyTestCase(unittest.TestCase):
+    """test class"""
     @classmethod
     def setUpClass(cls) -> None:
         """Removing the Stores and creating required AccessRequest for testing"""
         # pylint: disable=no-member
-
         requests_store = RequestJsonStore()
         requests_store.empty_store()
         keys_store = KeysJsonStore()
@@ -41,7 +42,6 @@ class MyTestCase(unittest.TestCase):
             #pylint: disable=no-member
             param_test_cases = csv.DictReader(csv_file, delimiter=';')
             my_code = AccessManager()
-            #keys_store = KeysJsonStore()
             for row in param_test_cases:
                 file_name = JSON_FILES_PATH + row['FILE']
                 print("Param:" + row['ID TEST'] + row["TYPE"])
@@ -49,13 +49,7 @@ class MyTestCase(unittest.TestCase):
                     valor = my_code.revoke_key(file_name)
                     self.assertEqual(row["EXPECTED RESULT"], valor)
                     print("el valor: " + valor)
-                    #generated_key = keys_store.find_item(valor)
-                    #print(generated_key)
-                    #self.assertIsNotNone(generated_key)
                 else:
-                    #if row["ID TEST"] == "test_rev_revoked":
-                        #print("ENTERED")
-                        #my_code.revoke_key(file_name)
                     with self.assertRaises(AccessManagementException) as c_m:
                         my_code.revoke_key(file_name)
                     self.assertEqual(c_m.exception.message, row["EXPECTED RESULT"])

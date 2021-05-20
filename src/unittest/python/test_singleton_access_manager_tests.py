@@ -13,6 +13,7 @@ class MyTestCase(unittest.TestCase):
     def test_singleton_access_manager( self ):
         """Instance the three singletons and test they're equal
             Instance objects from non singleton class and test they're differet"""
+        #pylint: disable=too-many-locals
         access_manager_1 = AccessManager()
         access_manager_2 = AccessManager()
         access_manager_3 = AccessManager()

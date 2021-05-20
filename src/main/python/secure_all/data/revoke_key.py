@@ -19,7 +19,6 @@ class RevokeKey:
 
     def revoke_key(self):
         key_object = AccessKey.create_key_from_id(self.__key)
-        print(key_object.revoked)
         if key_object.expiration_date != 0 and key_object.expiration_date <= TEST_TIME:
             raise AccessManagementException("Key already expired")
         if key_object.get_revoked(self.__key):
@@ -27,7 +26,6 @@ class RevokeKey:
         key_object.revoked = True
         key_object.revocation = self.__revocation
         key_object.reason = self.__reason
-        print(key_object.revoked)
         revoke_store = RevokeJsonStore()
         revoke_store.replace_item(self.__key, key_object.store())
         return key_object.emails_to_str()
