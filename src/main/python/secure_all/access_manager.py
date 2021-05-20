@@ -3,6 +3,7 @@
 from secure_all.data.access_key import AccessKey
 from secure_all.data.access_request import AccessRequest
 from secure_all.data.access_log import AccessLog
+from secure_all.data.revoke_key import RevokeKey
 
 
 class AccessManager:
@@ -17,7 +18,7 @@ class AccessManager:
             my_request.store_request()
             return my_request.access_code
 
-        def get_access_key( self, keyfile ):
+        def get_access_key(self, keyfile):
             """Returns the access key for the access code & dni received in a json file"""
             my_key = AccessKey.create_key_from_file(keyfile)
             my_key.store_keys()
@@ -29,6 +30,11 @@ class AccessManager:
             access_log = AccessLog(key)
             access_log.store_log()
             return test
+
+        def revoke_key(self, keyfile):
+            key = RevokeKey.create_key_from_file_for_revoke(keyfile)
+            return key.revoke_key()
+
 
     __instance = None
 

@@ -5,7 +5,7 @@ from secure_all.cfg.access_manager_config import JSON_FILES_PATH
 
 
 
-class AccessLogJsonStore():
+class AccessLogJsonStore:
     """Extends JsonStore"""
 
     class __AccessLogJsonStore(JsonStore):

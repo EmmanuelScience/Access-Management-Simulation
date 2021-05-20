@@ -1,0 +1,57 @@
+TYPE;ID TEST;FILE;EXPECTED RESULT
+VALID;test_v_1;test_v_1.json;mail1@uc3m.es, mail2@uc3m.es
+DELETION;test_rev_n1_nt_del_2;test_rev_n1_nt_del_2.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n1_nt_dup_3;test_rev_n1_nt_dup_3.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n2_t_del_4;test_rev_n2_t_del_4.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n2_t_dup_5;test_rev_n2_t_dup_5.json;JSON Decode Error - Wrong JSON Format
+MODIFICATION;test_rev_n2_t_mod_6;test_rev_n2_t_mod_6.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n3_nt_del_7;test_rev_n3_nt_del_7.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n3_nt_dup_8;test_rev_n3_nt_dup_8.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n5_nt_del_9;test_rev_n5_nt_del_9.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n5_nt_dup_10;test_rev_n5_nt_dup_10.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n6_t_del_11;test_rev_n6_t_del_11.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n6_t_dup_12;test_rev_n6_t_dup_12.json;JSON Decode Error - Wrong JSON Format
+MODIFICATION;test_rev_n6_t_mod_13;test_rev_n6_t_mod_13.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n7_nt_del_14;test_rev_n7_nt_del_14.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n7_nt_dup_15;test_rev_n7_nt_dup_15.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n9_nt_del_16;test_rev_n9_nt_del_16.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n9_nt_dup_17;test_rev_n9_nt_dup_17.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n10_nt_del_18;test_rev_n10_nt_del_18.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n10_nt_dup_19;test_rev_n10_nt_dup_19.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n11_t_del_20;test_rev_n11_t_del_20.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n11_t_dup_21;test_rev_n11_t_dup_21.json;JSON Decode Error - Wrong JSON Format
+MODIFICATION;test_rev_n11_t_mod_22;test_rev_n11_t_mod_22.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n12_nt_del_23;test_rev_n12_nt_del_23.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n12_nt_dup_24;test_rev_n12_nt_dup_24.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n13_nt_del_25;test_rev_n13_nt_del_25.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n13_nt_dup_26;test_rev_n13_nt_dup_26.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n15_nt_del_27;test_rev_n15_nt_del_27.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n15_nt_dup_28;test_rev_n15_nt_dup_28.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n16_nt_del_29;test_rev_n16_nt_del_29.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n16_nt_dup_30;test_rev_n16_nt_dup_30.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n18_nt_del_31;test_rev_n18_nt_del_31.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n18_nt_dup_32;test_rev_n18_nt_dup_32.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n19_t_del_33;test_rev_n19_t_del_33.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n19_t_dup_34;test_rev_n19_t_dup_34.json;JSON Decode Error - Wrong JSON Format
+MODIFICATION;test_rev_n19_t_mod_35;test_rev_n19_t_mod_35.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n20_t_del_36;test_rev_n20_t_del_36.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n20_t_dup_37;test_rev_n20_t_dup_37.json;JSON Decode Error - Wrong JSON Format
+MODIFICATION;test_rev_n20_t_mod_38;test_rev_n20_t_mod_38.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n23_t_del_39;test_rev_n23_t_del_39.json;key invalid
+DUPLICATION;test_rev_n23_t_dup_40;test_rev_n23_t_dup_40.json;key invalid
+MODIFICATION;test_rev_n23_t_mod_41;test_rev_n23_t_mod_41.json;key invalid
+DELETION;test_rev_n26_t_del_42;test_rev_n26_t_del_42.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n26_t_dup_43;test_rev_n26_t_dup_43.json;JSON Decode Error - Wrong JSON Format
+MODIFICATION;test_rev_n26_t_mod_44;test_rev_n26_t_mod_44.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n29_t_del_45;test_rev_n29_t_del_45.json;Invalid Revocation
+DUPLICATION;test_rev_n29_t_dup_46;test_rev_n29_t_dup_46.json;Invalid Revocation
+MODIFICATION;test_rev_n29_t_mod_47;test_rev_n29_t_mod_47.json;Invalid Revocation
+DELETION;test_rev_n32_t_del_48;test_rev_n32_t_del_48.json;JSON Decode Error - Wrong JSON Format
+DUPLICATION;test_rev_n32_t_dup_49;test_rev_n32_t_dup_49.json;JSON Decode Error - Wrong JSON Format
+MODIFICATION;test_rev_n32_t_mod_50;test_rev_n32_t_mod_50.json;JSON Decode Error - Wrong JSON Format
+DELETION;test_rev_n35_t_del_51;test_rev_n35_t_del_51.json;Invalid Reason
+DUPLICATION;test_rev_n35_t_dup_52;test_rev_n35_t_dup_52.json;Invalid Reason
+MODIFICATION;test_rev_n35_t_mod_53;test_rev_n35_t_mod_53.json;Invalid Reason
+null;test_rev_no_exist;test_rev_no_exist.json;key is not found or is expired
+null;test_rev_expired;test_rev_expired.json;Key already expired
+null;test_rev_revoked;test_rev_revoked.json;Key already revoked

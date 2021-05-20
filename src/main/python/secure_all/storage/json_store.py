@@ -37,15 +37,21 @@ class JsonStore():
         self._data_list.append(item.store())
         self.save_store()
 
-    def find_item( self, key ):
+    def find_item(self, key):
         """find the value key in the _KEY_FIELD"""
         self.load_store()
         for item in self._data_list:
-            if item[self._ID_FIELD ] == key:
+            if item[self._ID_FIELD] == key:
                 return item
         return None
 
-    def save_store( self ):
+    def replace_item(self, key, new_item):
+        item = self.find_item(key)
+        self._data_list.remove(item)
+        self._data_list.append(new_item)
+        self.save_store()
+
+    def save_store(self):
         """Save the list in the json file _FILE_PATH
         Now it is not necessary check the list because it was created in the __init__
         so the only thing we need is to save the list in the file, raising and exception if
