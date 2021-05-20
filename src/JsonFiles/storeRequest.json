@@ -1,14 +1,5 @@
 [
   {
-    "_AccessRequest__id_document": "05270358T",
-    "_AccessRequest__name": "Pedro Martin",
-    "_AccessRequest__visitor_type": "Resident",
-    "_AccessRequest__email_address": "uc3m@gmail.com",
-    "_AccessRequest__validity": 0,
-    "_AccessRequest__time_stamp": 1614962381.90867,
-    "_AccessRequest__access_code": "fdf839d5e6ac1c6b7ce0625577a80568"
-  },
-  {
     "_AccessRequest__id_document": "87654123L",
     "_AccessRequest__name": "Maria Montero",
     "_AccessRequest__visitor_type": "Guest",
