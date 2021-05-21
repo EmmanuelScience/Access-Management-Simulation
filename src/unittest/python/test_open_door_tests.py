@@ -20,6 +20,14 @@ class TestAccessManager(unittest.TestCase):
         keys_store.empty_store()
         # introduce a key valid and not expired and guest
         my_manager = AccessManager()
+        my_manager.request_access_code("51293600N", "Pedro Sanchez",
+                                       "Resident", "uc3m@gmail.com", 0)
+        my_manager.request_access_code("74009663X", "Emma Irabor",
+                                       "Guest", "uc3m@gmail.com", 5)
+        rev_guest = my_manager.get_access_key(JSON_FILES_PATH + "revoked_for_open_guest.json")
+        rev_res = my_manager.get_access_key(JSON_FILES_PATH + "revoked_for_open_resident.json")
+        my_manager.revoke_key(JSON_FILES_PATH + "revoking_for_resident.json")
+        my_manager.revoke_key(JSON_FILES_PATH + "revoking_for_guest.json")
         my_manager.request_access_code("05270358T", "Pedro Martin",
                                                "Resident", "uc3m@gmail.com", 0)
 
@@ -46,6 +54,22 @@ class TestAccessManager(unittest.TestCase):
         store_key = JSON_FILES_PATH + 'storeAccessLog.json'
         with open(store_key, "w") as file:
             json.dump([], file)
+
+    def test_key_already_revoked_guest(self):
+        """path: key has already been revoked for guest"""
+        my_key = AccessManager()
+        with self.assertRaises(AccessManagementException) as c_m:
+            my_key.open_door \
+                ("c2b67b79fc6c06c0494b079a01e97817c4127ca241db9cdd26ea2b68e69ec117")
+        self.assertEqual("key already revoked", c_m.exception.message)
+
+    def test_key_already_revoked_resident(self):
+        """path: key has already been revoked for guest"""
+        my_key = AccessManager()
+        with self.assertRaises(AccessManagementException) as c_m:
+            my_key.open_door \
+                ("eaae439f7ad8c55433dc5cb3fae3f4235dc2a490fe70c7adb5fc9eef41b3f166")
+        self.assertEqual("key already revoked", c_m.exception.message)
 
     def test_open_door_bad_key_regex(self):
         """path: regex is not valid , key length is 63 chars"""

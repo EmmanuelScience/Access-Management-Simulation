@@ -26,6 +26,7 @@ class MyTestCase(unittest.TestCase):
                                        "Guest", "uc3m@gmail.com", 5)
         my_manager.request_access_code("34753293V", "Juan Perez",
                                        "Guest", "uc3m@gmail.com", 2)
+
         file_name = JSON_FILES_PATH + "key_ok.json"
         my_manager.get_access_key(file_name)
         file_name = JSON_FILES_PATH + "key_ok2.json"

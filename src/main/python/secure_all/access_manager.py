@@ -26,10 +26,11 @@ class AccessManager:
 
         def open_door( self, key ):
             """Opens the door if the key is valid an it is not expired"""
-            test = AccessKey.create_key_from_id(key).is_valid()
+            created_key = AccessKey.create_key_from_id(key)
+            check_valid = created_key.is_valid()
             access_log = AccessLog(key)
             access_log.store_log()
-            return test
+            return check_valid
 
         def revoke_key(self, keyfile):
             key = RevokeKey.create_key_from_file_for_revoke(keyfile)

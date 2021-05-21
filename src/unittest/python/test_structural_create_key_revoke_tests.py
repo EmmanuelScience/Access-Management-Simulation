@@ -28,8 +28,7 @@ class MyTestCase(unittest.TestCase):
         my_manager.get_access_key(file_name)
 
     def test_st_rk_ckr_iv_1(self):
-        test_file = JSON_FILES_PATH + "" \
-                                      ""
+        test_file = JSON_FILES_PATH + "test_rev_no_exist.json"
         with self.assertRaises(AccessManagementException) as c_m:
             RevokeKey.create_key_from_file_for_revoke(test_file)
         self.assertEqual("key is not found or is expired", c_m.exception.message)

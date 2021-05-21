@@ -153,6 +153,8 @@ class AccessKey():
         if not (self.__expiration_date == 0 or
                 self.__expiration_date > just_now_timestamp):
             raise AccessManagementException("key is not found or is expired")
+        if self.get_revoked(self.__key):
+            raise AccessManagementException("key already revoked")
         return True
 
     @classmethod
