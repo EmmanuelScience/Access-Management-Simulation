@@ -4,7 +4,7 @@ from secure_all.exception.access_management_exception import AccessManagementExc
 from secure_all.cfg.access_manager_config import JSON_FILES_PATH
 
 
-class RequestJsonStore():
+class RequestJsonStore:
     """Extends JsonStore"""
 
     class __RequestJsonStore(JsonStore):
@@ -23,14 +23,14 @@ class RequestJsonStore():
         _FILE_PATH = JSON_FILES_PATH + "storeRequest.json"
         _ID_FIELD = ID_FIELD
 
-        def add_item( self, item):
+        def add_item(self, item):
             """Implementing the restrictions related to avoid duplicated DNIs in the list
             import of AccessRequest must be placed here instead of at the top of the file
             to avoid circular references"""
-            #pylint: disable=import-outside-toplevel,cyclic-import
+            # pylint: disable=import-outside-toplevel,cyclic-import
             from secure_all.data.access_request import AccessRequest
 
-            if not isinstance(item,AccessRequest):
+            if not isinstance(item, AccessRequest):
                 raise AccessManagementException(self.INVALID_ITEM)
 
             if not self.find_item(item.access_code) is None:
@@ -40,13 +40,13 @@ class RequestJsonStore():
 
     __instance = None
 
-    def __new__( cls ):
+    def __new__(cls):
         if not RequestJsonStore.__instance:
             RequestJsonStore.__instance = RequestJsonStore.__RequestJsonStore()
         return RequestJsonStore.__instance
 
-    def __getattr__ ( self, nombre ):
-        return getattr(self.__instance, nombre)
+    def __getattr__(self, name):
+        return getattr(self.__instance, name)
 
-    def __setattr__ ( self, nombre, valor ):
-        return setattr(self.__instance, nombre, valor)
+    def __setattr__(self, name, value):
+        return setattr(self.__instance, name, value)

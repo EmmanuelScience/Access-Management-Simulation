@@ -8,18 +8,13 @@ from secure_all.data.attributes.attribute_access_code import AccessCode
 from secure_all.data.attributes.attribute_dni import Dni
 from secure_all.data.attributes.attribute_email_list import EmailList
 from secure_all.data.attributes.attribute_key import Key
-
 from secure_all.storage.keys_json_store import KeysJsonStore
 from secure_all.parser.key_json_parser import KeyJsonParser
-from secure_all.parser.revoke_json_parser import RevokeJsonParser
 
 
-
-
-class AccessKey():
+class AccessKey:
     """Class representing the key for accessing the building"""
-    #pylint: disable=too-many-instance-attributes
-
+    # pylint: disable=too-many-instance-attributes
     ALG_SHA256 = "SHA-256"
     TYPE_DS = "DS"
 
@@ -28,18 +23,18 @@ class AccessKey():
         self.__type = self.TYPE_DS
         self.__access_code = AccessCode(access_code).value
         self.__dni = Dni(dni).value
-        access_request = AccessRequest.create_request_from_code(self.__access_code, self.__dni)
+        access_request = AccessRequest.create_request_from_code(self.__access_code)
         self.__notification_emails = EmailList(notification_emails).value
         validity = access_request.validity
-        #justnow = datetime.utcnow()
-        #self.__issued_at = datetime.timestamp(justnow)
+        #just_now = datetime.utcnow()
+        #self.__issued_at = datetime.timestamp(just_now)
         # fix self.__issued_at only for testing 13-3-2021 18_49
         self.__issued_at = 1615627129.580297
         if validity == 0:
             self.__expiration_date = 0
         else:
-            #timestamp is represneted in seconds.microseconds
-            #validity must be expressed in senconds to be added to the timestap
+            # timestamp is represented in seconds.microseconds
+            # validity must be expressed in seconds to be added to the timestamp
             self.__expiration_date = self.__issued_at + (validity * 30 * 24 * 60 * 60)
         self.__key = hashlib.sha256(self.__signature_string().encode()).hexdigest()
         self.__revoked = revoked
@@ -47,6 +42,7 @@ class AccessKey():
         self.__reason = None
 
     def store(self):
+        """Returns a dictionary with all class attributes"""
         return self.__dict__
 
     def __signature_string(self):
@@ -56,6 +52,7 @@ class AccessKey():
                + ",expirationdate:" + str(self.__expiration_date) + "}"
 
     def emails_to_str(self):
+        """Returns a string with all the emails"""
         email_str = ""
         for email in self.__notification_emails:
             email_str += email + ", "
@@ -97,7 +94,7 @@ class AccessKey():
         return self.__notification_emails
 
     @notification_emails.setter
-    def notification_emails( self, value ):
+    def notification_emails(self, value):
         """Setter for notification emails"""
         self.__notification_emails = value
 

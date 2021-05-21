@@ -1,10 +1,9 @@
 """Generic class for JSON storage"""
-import copy
 import json
 from secure_all.exception.access_management_exception import AccessManagementException
 
 
-class JsonStore():
+class JsonStore:
     """Manages stores based on JsonFiles"""
     _FILE_PATH = ""
     _ID_FIELD = ""
@@ -13,12 +12,12 @@ class JsonStore():
         self._data_list = []
         self.load_store()
 
-    def empty_store( self ):
+    def empty_store(self):
         """empty the store"""
         self._data_list = []
         self.save_store()
 
-    def load_store( self ):
+    def load_store(self):
         """"Loads _data_list from the json file
         If the file is not found a new emtpy list is created """
         try:
@@ -29,7 +28,7 @@ class JsonStore():
         except json.JSONDecodeError as ex:
             raise AccessManagementException("JSON Decode Error - Wrong JSON Format") from ex
 
-    def add_item( self, item ):
+    def add_item(self, item):
         """Adds a new element to the list and saves the file
         Since this is a generic class further verifications should be included
         in the specific stores"""
@@ -46,6 +45,8 @@ class JsonStore():
         return None
 
     def replace_item(self, key, new_item):
+        """Removes the item from the JSON file found with the
+        given key and adds the given new_item"""
         item = self.find_item(key)
         self._data_list.remove(item)
         self._data_list.append(new_item)

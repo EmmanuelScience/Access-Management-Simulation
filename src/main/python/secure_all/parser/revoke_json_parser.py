@@ -4,7 +4,7 @@ from secure_all.parser.json_parser import JsonParser
 
 class RevokeJsonParser(JsonParser):
     """parser for input key files containing a AccessKey request"""
-    #pylint: disable=too-few-public-methods
+    # pylint: disable=too-few-public-methods
     KEY = "Key"
     REVOCATION = "Revocation"
     REASON = "Reason"

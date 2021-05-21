@@ -1,3 +1,4 @@
+"""MODULE: revoke_key. Contains the revoke key class"""
 from datetime import datetime
 from secure_all.data.attributes.attribute_key import Key
 from secure_all.data.attributes.attribute_revocation import Revocation
@@ -8,18 +9,19 @@ from secure_all.storage.revoke_json_store import RevokeJsonStore
 from secure_all.exception.access_management_exception import AccessManagementException
 from secure_all.data.access_key import AccessKey
 
-TEST_TIME = datetime.timestamp(datetime.utcnow())
-
 
 class RevokeKey:
+    """Class representing a request to revoke a key"""
     def __init__(self, key, revocation, reason):
         self.__key = Key(key).value
         self.__revocation = Revocation(revocation).value
         self.__reason = Reason(reason).value
 
     def revoke_key(self):
+        """Method that revokes the key that the object of this class contains"""
         key_object = AccessKey.create_key_from_id(self.__key)
-        if key_object.expiration_date != 0 and key_object.expiration_date <= TEST_TIME:
+        if key_object.expiration_date != 0 and \
+                key_object.expiration_date <= datetime.timestamp(datetime.utcnow()):
             raise AccessManagementException("Key already expired")
         if key_object.get_revoked(self.__key):
             raise AccessManagementException("Key already revoked")

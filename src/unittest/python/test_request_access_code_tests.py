@@ -33,7 +33,7 @@ class MyTestCase(unittest.TestCase):
                                                          int(row[ "VALIDITY" ]))
                     self.assertEqual( row[ 'EXPECTED RESULT' ], valor)
                     # Check if this DNI is store in storeRequest.json
-                    generated_request = AccessRequest.create_request_from_code(valor,row[ "DNI" ])
+                    generated_request = AccessRequest.create_request_from_code(valor)
                     my_request = AccessRequest(row[ "DNI" ], row[ "NAME SURNAME" ],
                                                row[ "ACCESS TYPE" ],  row[ "email" ],
                                                int(row[ "VALIDITY" ]))
