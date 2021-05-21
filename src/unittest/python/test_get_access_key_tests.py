@@ -8,8 +8,6 @@ from secure_all import AccessManager, AccessManagementException, \
 
 class TestAccessManager(unittest.TestCase):
     """Test class for testing get_access_key"""
-
-
     @classmethod
     def setUpClass(cls) -> None:
         """Removing the Stores and creating required AccessRequest for testing"""
@@ -22,25 +20,20 @@ class TestAccessManager(unittest.TestCase):
 
         # introduce a key valid and not expired and guest
         my_manager = AccessManager()
-        print("one")
         my_manager.request_access_code("05270358T", "Pedro Martin",
                                             "Resident", "uc3m@gmail.com", 0)
-        print("two")
         my_manager.request_access_code("87654123L", "Maria Montero",
                                             "Guest", "maria@uc3m.es", 15)
 
-        print("three")
         my_manager.request_access_code("53935158C", "Marta Lopez",
                                                 "Guest", "uc3m@gmail.com", 5)
-        print("Finished init")
 
-
-    def test_parametrized_cases_tests( self ):
+    def test_parametrized_cases_tests(self):
         """Parametrized cases read from testingCases_RF1.csv"""
         my_cases = JSON_FILES_PATH + "testingCases_RF2.csv"
-        with open(my_cases, newline='', encoding='utf-8') as csvfile:
+        with open(my_cases, newline='', encoding='utf-8') as csv_file:
             #pylint: disable=no-member
-            param_test_cases = csv.DictReader(csvfile, delimiter=';')
+            param_test_cases = csv.DictReader(csv_file, delimiter=';')
             my_code = AccessManager()
             keys_store = KeysJsonStore()
             for row in param_test_cases:

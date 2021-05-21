@@ -6,18 +6,14 @@ from secure_all import AccessManager, AccessManagementException, \
     AccessRequest, JSON_FILES_PATH, RequestJsonStore
 
 
-
 class MyTestCase(unittest.TestCase):
     """ doc """
-
     # pylint: disable=no-member
-
     @classmethod
     def setUpClass(cls):
         """ inicializo el entorno de prueba """
         requests_store = RequestJsonStore()
         requests_store.empty_store()
-
 
     def test_parametrized_cases_tests( self ):
         """Parametrized cases read from testingCases_RF1.csv"""
@@ -52,6 +48,7 @@ class MyTestCase(unittest.TestCase):
             my_code.request_access_code("12345678Z", "Pedro Martin",
                                         "Resident", "test@test.com", "a")
         self.assertEqual(c_m.exception.message, "days invalid")
+
 
 if __name__ == '__main__':
     unittest.main()

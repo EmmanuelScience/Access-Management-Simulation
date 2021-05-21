@@ -18,7 +18,7 @@ class KeysJsonStore:
         _FILE_PATH = JSON_FILES_PATH + "storeKeys.json"
         _ID_FIELD = ID_FIELD
 
-        def add_item( self, item):
+        def add_item(self, item):
             """Implementing the restrictions related to avoid duplicated keys"""
             # pylint: disable=import-outside-toplevel,cyclic-import
             from secure_all.data.access_key import AccessKey

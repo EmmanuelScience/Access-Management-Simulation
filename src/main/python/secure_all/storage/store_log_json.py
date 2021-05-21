@@ -11,7 +11,7 @@ class AccessLogJsonStore:
         """Used for the singleton"""
         # pylint: disable=invalid-name
         INVALID_ITEM = "key invalid"
-        ID_FIELD = '_AccessLog__key'
+        ID_FIELD = "_AccessLog__key"
         KEY_ALREADY_STORED = "Access already logged"
         _FILE_PATH = JSON_FILES_PATH + "storeAccessLog.json"
         _ID_FIELD = ID_FIELD

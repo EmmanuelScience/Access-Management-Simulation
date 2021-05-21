@@ -9,7 +9,7 @@ class RevokeJsonStore:
     class __RevokeJsonStore(JsonStore):
         """Used for the singleton"""
         # pylint: disable=invalid-name
-        ID_FIELD = '_AccessKey__key'
+        ID_FIELD = "_AccessKey__key"
         _FILE_PATH = JSON_FILES_PATH + "storeKeys.json"
         _ID_FIELD = ID_FIELD
 

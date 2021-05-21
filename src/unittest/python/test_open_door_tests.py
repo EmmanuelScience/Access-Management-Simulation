@@ -9,7 +9,6 @@ from secure_all import AccessManager, AccessManagementException, \
 class TestAccessManager(unittest.TestCase):
     """test class for open_door"""
     # pylint: disable=no-member
-
     @classmethod
     def setUpClass(cls) -> None:
         # first af all, i introduce all value tha I need for the estructural testing
@@ -112,6 +111,7 @@ class TestAccessManager(unittest.TestCase):
                 ("459063166d5a8e38ac493d4f523e31cca39bdc2c523d12dc08cae4a983224495")
 
         self.assertEqual("key is not found or is expired", c_m.exception.message)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -8,6 +8,10 @@ class JsonParser:
     # pylint: disable=too-few-public-methods
     _key_list = []
     _key_error_message = "JSON Decode Error - Wrong label"
+    _file_not_found_error_message = "Wrong file or file path"
+    _json_decode_error_message = "JSON Decode Error - Wrong JSON Format"
+    _ENCODING = "utf-8"
+    _NEWLINE = ""
 
     def __init__(self, file):
         self._file = file
@@ -17,12 +21,12 @@ class JsonParser:
     def _parse_json_file(self):
         """read the file in json format format"""
         try:
-            with open(self._file, "r", encoding="utf-8", newline="") as json_file:
+            with open(self._file, "r", encoding=self._ENCODING, newline=self._NEWLINE) as json_file:
                 data = json.load(json_file)
         except FileNotFoundError as ex:
-            raise AccessManagementException("Wrong file or file path") from ex
+            raise AccessManagementException(self._file_not_found_error_message) from ex
         except json.JSONDecodeError as ex:
-            raise AccessManagementException("JSON Decode Error - Wrong JSON Format") from ex
+            raise AccessManagementException(self._json_decode_error_message) from ex
         return data
 
     def _validate_json(self):

@@ -1,7 +1,6 @@
 """Contains the class Access Key"""
-from datetime import datetime
 import hashlib
-
+from datetime import datetime
 from secure_all.exception.access_management_exception import AccessManagementException
 from secure_all.data.access_request import AccessRequest
 from secure_all.data.attributes.attribute_access_code import AccessCode
@@ -10,6 +9,15 @@ from secure_all.data.attributes.attribute_email_list import EmailList
 from secure_all.data.attributes.attribute_key import Key
 from secure_all.storage.keys_json_store import KeysJsonStore
 from secure_all.parser.key_json_parser import KeyJsonParser
+
+CLOSE = "}"
+OPEN = "{"
+SEP = ","
+EXPIRATION_DATE_KEY = "expirationdate:"
+ISSUE_DATE_KEY = "issuedate:"
+ACCESS_CODE_KEY = "accesscode:"
+TYPE_KEY = "typ:"
+ALG_KEY = "alg:"
 
 
 class AccessKey:
@@ -47,9 +55,9 @@ class AccessKey:
 
     def __signature_string(self):
         """Composes the string to be used for generating the key"""
-        return "{alg:"+self.__alg + ",typ:" + self.__type + ",accesscode:"\
-               + self.__access_code+",issuedate:"+str(self.__issued_at)\
-               + ",expirationdate:" + str(self.__expiration_date) + "}"
+        return (OPEN + ALG_KEY + self.__alg + SEP + TYPE_KEY + self.__type + SEP + ACCESS_CODE_KEY
+                + self.__access_code + SEP + ISSUE_DATE_KEY + str(self.__issued_at) + SEP
+                + EXPIRATION_DATE_KEY + str(self.__expiration_date) + CLOSE)
 
     def emails_to_str(self):
         """Returns a string with all the emails"""

@@ -7,6 +7,8 @@ class JsonStore:
     """Manages stores based on JsonFiles"""
     _FILE_PATH = ""
     _ID_FIELD = ""
+    _ENCODING = "utf-8"
+    _NEWLINE = ""
 
     def __init__(self):
         self._data_list = []
@@ -21,7 +23,7 @@ class JsonStore:
         """"Loads _data_list from the json file
         If the file is not found a new emtpy list is created """
         try:
-            with open(self._FILE_PATH, "r", encoding="utf-8", newline="") as file:
+            with open(self._FILE_PATH, "r", encoding=self._ENCODING, newline=self._NEWLINE) as file:
                 self._data_list = json.load(file)
         except FileNotFoundError as ex:
             self._data_list = []
@@ -58,7 +60,7 @@ class JsonStore:
         so the only thing we need is to save the list in the file, raising and exception if
         the file doesn't exists """
         try:
-            with open(self._FILE_PATH, "w", encoding="utf-8", newline="") as file:
+            with open(self._FILE_PATH, "w", encoding=self._ENCODING, newline=self._NEWLINE) as file:
                 json.dump(self._data_list, file, indent=2)
         except FileNotFoundError as ex:
             raise AccessManagementException("Wrong file or file path") from ex

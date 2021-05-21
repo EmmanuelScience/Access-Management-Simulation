@@ -9,6 +9,9 @@ from secure_all.data.attributes.attribute_access_type import AccessType
 from secure_all.data.attributes.attribute_email import Email
 from secure_all.storage.requests_json_store import RequestJsonStore
 
+ACCESS_CODE = "_AccessRequest__access_code"
+ACCESS_REQUEST = "AccessRequest:"
+
 
 class AccessRequest:
     """Class representing the access request"""
@@ -30,12 +33,12 @@ class AccessRequest:
     def store(self):
         """Returns a dictionary with all class attributes and the access_code"""
         my_dict = copy.deepcopy(self.__dict__)
-        my_dict["_AccessRequest__access_code"] = self.access_code
+        my_dict[ACCESS_CODE] = self.access_code
         return my_dict
 
     def __str__(self):
         """It returns the json corresponding to the AccessRequest"""
-        return "AccessRequest:" + json.dumps(self.__dict__)
+        return ACCESS_REQUEST + json.dumps(self.__dict__)
 
     def store_request(self):
         """It Saves the request in the store"""
@@ -70,7 +73,7 @@ class AccessRequest:
 
     @property
     def email_address(self):
-        """Property representing the requester's email address"""
+        """Property representing the email address of the requester"""
         return self.__email_address
 
     @email_address.setter
@@ -79,7 +82,7 @@ class AccessRequest:
 
     @property
     def id_document(self):
-        """Property representing the requester's DNI"""
+        """Property representing the DNI of the requester"""
         return self.__id_document
 
     @id_document.setter

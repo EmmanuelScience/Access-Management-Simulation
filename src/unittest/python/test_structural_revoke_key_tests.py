@@ -3,6 +3,7 @@ from secure_all.data.revoke_key import RevokeKey
 from secure_all import AccessManager, AccessManagementException,\
     JSON_FILES_PATH, KeysJsonStore, RequestJsonStore
 
+
 class MyTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -37,21 +38,17 @@ class MyTestCase(unittest.TestCase):
             key.revoke_key()
         self.assertEqual("Key already expired", c_m.exception.message)
 
-
-
     def test_st_rk_rk_v_2(self):
         test_file = JSON_FILES_PATH + "test_v_1.json"
         key = RevokeKey.create_key_from_file_for_revoke(test_file)
         result = key.revoke_key()
         self.assertEqual(result, 'mail1@uc3m.es, mail2@uc3m.es')
 
-
     def test_st_rk_rk_v_4(self):
         test_file = JSON_FILES_PATH + "test_st_rk_rk_v_4.json"
         key = RevokeKey.create_key_from_file_for_revoke(test_file)
         result = key.revoke_key()
         self.assertEqual(result, 'mail1@uc3m.es, mail2@uc3m.es')
-
 
 
 if __name__ == '__main__':
